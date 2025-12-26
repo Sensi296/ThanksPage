@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background golden rays */
+body::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at top,
+        rgba(255, 196, 0, 0.35),
+        transparent 55%
+    );
+    filter: blur(70px);
+    pointer-events: none;
+}
+
+/* Main glass card */
+.card {
+    position: relative;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 190, 0, 0.4);
+    border-radius: 20px;
+    padding: 50px 70px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+        0 0 35px rgba(255, 200, 0, 0.35),
+        inset 0 0 20px rgba(255, 200, 0, 0.15);
+    text-align: center;
+    z-index: 2;
+    animation: float 6s ease-in-out infinite, glow 5s ease-in-out infinite;
+}
+
+/* Text */
+.card h1 {
+    color: #f3f3f3;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Top glow line */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 210, 120, 0.8),
+        transparent
+    );
+}
+
+/* Floating animation */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+/* Soft glow pulse */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 30px rgba(255, 200, 0, 0.25);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(255, 200, 0, 0.45);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(255, 200, 0, 0.25);
+    }
+}
